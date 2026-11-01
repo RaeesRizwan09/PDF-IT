@@ -53,7 +53,7 @@ URL. No auth prompt appears (the token is in the path).
 **ChatGPT:** Settings → Apps & Connectors → Developer mode ON → *Create* →
 paste the URL → authentication: **No authentication**.
 
-## Updating**
+## Updating
 
 Any source change:
 

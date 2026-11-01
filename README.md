@@ -14,14 +14,14 @@ URLs, but not header-based auth; the path token is that workaround).
 
 ## Highlights
 
-- **Zero-UI繁殖 rendering** — headless Chromium (Playwright, *headless-shell*
+- **Zero-UI rendering** — headless Chromium (Playwright, *headless-shell*
   build) renders HTML or captures live pages, with KaTeX/MathJax, web fonts
   and image-fallback handling baked in.
 - **A complete PDF toolkit — 14 tools** (merge, split, page-range extracts,
   rotate, watermark, page numbers, AES-256 encryption, metadata, text
   extraction) positioned for *chaining*: every tool takes URLs and returns
   URLs, so LLMs can compose flows like
-  *merge → watermark → → encrypt* without touching file bytes.
+  *merge → watermark → encrypt* without touching file bytes.
 - **Preset-based compression** — `light / medium / strong`.
   (image-heavy PDF saw 94% / 99.5% mid/strong in the smoke suite).
 - **Office → PDF** — PPTX/DOCX/XLSX/ODP/ODS/ODT/RTF/TXT/CSV via
@@ -61,7 +61,7 @@ no shared filesystem, so it stays stdio-only.)*
 
 ## Getting files in (and *why*, honestly)
 
-Mirko tools require **public `http(s)://` URLs** — LLM chat sandboxes (e.g.,
+Every tool calls require **public `http(s)://` URLs** — LLM chat sandboxes (e.g.,
 Claude.ai) cannot fetch arbitrary hosts (a platform DNS allowlist), and the
 chat model never receives attached binary bytes in the first place. Three
 bridges, covered by the server’s own instructions (the LLM will quote them):
@@ -98,7 +98,7 @@ bridges, covered by the server’s own instructions (the LLM will quote them):
 **Scale-to-zero** by default (min replicas 0 → cold starts pay a Chromium
 warmup); `--min-replicas 1` removes the wait at always-on cost.
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details and
-[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the deployüberblick.
+[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for the deployment walkthrough.
 
 ## Repository layout
 
