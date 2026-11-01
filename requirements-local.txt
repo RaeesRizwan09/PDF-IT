@@ -1,0 +1,9 @@
+# Local (agent-side) dependencies — no cloud bits, small footprint.
+mcp>=2.3.0,<3
+pypdf==6.21.4
+reportlab==5.1.0
+pikepdf==10.13.0.post1
+Pillow==12.3.0
+
+# Optional — HTML/URL → PDF rendering (needs `playwright install chromium`):
+# playwright==1.64.1

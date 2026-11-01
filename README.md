@@ -10,6 +10,11 @@ into **real, downloadable PDFs and files**, and ships a complete
 —the token is a secret path segment (Claude/ChatGPT connector UIs accept full
 URLs, but not header-based auth; the path token is that workaround).
 
+> **Using it from local agents?** Claude Code, Gemini CLI, OpenCode and
+> friends skip the cloud entirely with the bundled **local stdio server**
+> (`src/local_server.py`) — real file paths in, real files out.
+> See [docs/LOCAL-AGENTS.md](docs/LOCAL-AGENTS.md).
+
 ---
 
 ## Highlights
@@ -105,6 +110,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details and
 ```
 ├── src/
 │   ├── http_server.py    remote streamable-HTTP MCP server + upload page
+│   ├── local_server.py   local stdio MCP server for filesystem agents
 │   ├── pdftools.py       URL in → PDF out toolkit (pypdf/reportlab/pikepdf)
 │   ├── pipeline.py       shared Playwright rendering pipeline
 │   └── pdf_server.py     original local stdio server (reference)
@@ -113,9 +119,10 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details and
 │   ├── test_pdftools.py          chained-toolkit e2e (live)
 │   └── test_compress_office.py   compression + office e2e (live)
 ├── Dockerfile            python:3.12-slim + LibreOffice + headless-shell
-├── requirements.txt      pinned deps
+├── requirements.txt      pinned deps (remote server image)
+├── requirements-local.txt pinned deps (local agent use — no cloud bits)
 ├── deploy.sh             one-shot idempotent Azure deployment
-└── docs/                 architecture / deployment / testing deep dives
+└── docs/                 architecture / deployment / testing / local agents
 ```
 
 ## Testing
