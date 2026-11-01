@@ -1,0 +1,18 @@
+# Secrets & local state — never commit these
+.deploy-secrets
+*.env
+
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Rendering / test artifacts
+/tmp/
+*.pdf
+*.zip
+!tests/fixtures/*.pdf
+
+# Rootless-docker & auth helpers
+/rootless-docker/
+hosts.yml
